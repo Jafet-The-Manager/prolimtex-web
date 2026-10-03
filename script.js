@@ -287,14 +287,68 @@ setLanguage(savedLanguage);
 // QUOTE FORM
 // -------------------------
 
-quoteForm.addEventListener('submit', event => {
+// -------------------------
+// QUOTE FORM - WHATSAPP
+// -------------------------
 
+quoteForm.addEventListener('submit', event => {
   event.preventDefault();
+
+  const formData = new FormData(quoteForm);
+
+  const name = formData.get('name');
+  const company = formData.get('company');
+  const email = formData.get('email');
+  const message = formData.get('message');
 
   const currentLanguage =
     document.documentElement.lang || 'es';
 
-  formStatus.textContent =
-    translations[currentLanguage].form_status;
+  let whatsappMessage;
 
+  if (currentLanguage === 'en') {
+
+    whatsappMessage =
+`Hello PROLIMTEX!
+
+I would like to request a wholesale quote.
+
+Name: ${name}
+Company: ${company || 'Not provided'}
+Email: ${email}
+
+Request:
+${message}
+
+I am contacting you through the PROLIMTEX website.`;
+
+    formStatus.textContent =
+      'Opening WhatsApp to send your quote request...';
+
+  } else {
+
+    whatsappMessage =
+`¡Hola PROLIMTEX!
+
+Me gustaría solicitar una cotización de mayoreo.
+
+Nombre: ${name}
+Empresa: ${company || 'No especificada'}
+Correo: ${email}
+
+Solicitud:
+${message}
+
+Me estoy comunicando a través del sitio web de PROLIMTEX.`;
+
+    formStatus.textContent =
+      'Abriendo WhatsApp para enviar tu solicitud de cotización...';
+  }
+
+  const phoneNumber = '522215792968';
+
+  const whatsappURL =
+    `https://wa.me/${phoneNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+  window.open(whatsappURL, '_blank');
 });
