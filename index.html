@@ -3,181 +3,515 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="PROLIMTEX — productos textiles de limpieza para distribuidores, negocios y hogares." />
+  <meta
+    name="description"
+    content="PROLIMTEX — productos textiles de limpieza para distribuidores, negocios y hogares."
+  />
   <title>PROLIMTEX | Soluciones textiles de limpieza</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  >
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
+
   <header class="site-header">
     <div class="container nav-wrap">
+
       <a href="#inicio" class="brand" aria-label="PROLIMTEX inicio">
         <span class="brand-mark">P</span>
         <span>PROLIMTEX</span>
       </a>
 
-      <button class="menu-button" aria-label="Abrir menú" aria-expanded="false">☰</button>
+      <button
+        class="menu-button"
+        aria-label="Abrir menú"
+        aria-expanded="false"
+      >
+        ☰
+      </button>
 
       <nav class="main-nav" aria-label="Navegación principal">
-        <a href="#productos">Productos</a>
-        <a href="#mayoreo">Mayoreo</a>
-        <a href="#nosotros">Nosotros</a>
-        <a href="#contacto" class="nav-cta">Solicitar cotización</a>
+
+        <a href="#productos" data-i18n="nav_products">
+          Productos
+        </a>
+
+        <a href="#mayoreo" data-i18n="nav_wholesale">
+          Mayoreo
+        </a>
+
+        <a href="#nosotros" data-i18n="nav_about">
+          Nosotros
+        </a>
+
+        <a href="#contacto" class="nav-cta" data-i18n="nav_quote">
+          Solicitar cotización
+        </a>
+
+        <div class="language-switcher">
+          <button
+            type="button"
+            class="language-button active"
+            data-lang="es"
+            aria-pressed="true"
+          >
+            ES
+          </button>
+
+          <span class="language-divider">|</span>
+
+          <button
+            type="button"
+            class="language-button"
+            data-lang="en"
+            aria-pressed="false"
+          >
+            EN
+          </button>
+        </div>
+
       </nav>
     </div>
   </header>
 
+
   <main>
+
+    <!-- HERO -->
+
     <section class="hero" id="inicio">
+
       <div class="container hero-grid">
+
         <div class="hero-copy">
-          <p class="eyebrow">Textiles de limpieza para distribución y negocio</p>
-          <h1>Productos funcionales para limpiar, abastecer y vender mejor.</h1>
-          <p class="hero-text">
-            PROLIMTEX fabrica y comercializa soluciones textiles de limpieza para distribuidores,
-            pequeños negocios y clientes que buscan abastecimiento confiable.
+
+          <p class="eyebrow" data-i18n="hero_eyebrow">
+            Textiles de limpieza para distribución y negocio
           </p>
+
+          <h1 data-i18n="hero_title">
+            Productos funcionales para limpiar, abastecer y vender mejor.
+          </h1>
+
+          <p class="hero-text" data-i18n="hero_text">
+            PROLIMTEX fabrica y comercializa soluciones textiles de limpieza
+            para distribuidores, pequeños negocios y clientes que buscan
+            abastecimiento confiable.
+          </p>
+
           <div class="hero-actions">
-            <a class="button button-primary" href="#contacto">Solicitar cotización mayoreo</a>
-            <a class="button button-secondary" href="#productos">Ver productos</a>
+
+            <a
+              class="button button-primary"
+              href="#contacto"
+              data-i18n="hero_quote"
+            >
+              Solicitar cotización mayoreo
+            </a>
+
+            <a
+              class="button button-secondary"
+              href="#productos"
+              data-i18n="hero_products"
+            >
+              Ver productos
+            </a>
+
           </div>
+
           <div class="hero-note">
-            <span>✓ Atención a distribuidores</span>
-            <span>✓ Venta por volumen</span>
-            <span>✓ Opciones para retail</span>
+
+            <span data-i18n="hero_note_1">
+              ✓ Atención a distribuidores
+            </span>
+
+            <span data-i18n="hero_note_2">
+              ✓ Venta por volumen
+            </span>
+
+            <span data-i18n="hero_note_3">
+              ✓ Opciones para retail
+            </span>
+
           </div>
         </div>
 
-        <div class="hero-visual" aria-label="Vista conceptual de productos PROLIMTEX">
+
+        <div
+          class="hero-visual"
+          aria-label="Vista conceptual de productos PROLIMTEX"
+        >
+
           <div class="fabric-card fabric-card-main">
-            <span class="fabric-label">JERGA</span>
+            <span class="fabric-label" data-i18n="fabric_mop">
+              JERGA
+            </span>
+
             <div class="fabric-texture"></div>
           </div>
+
           <div class="fabric-card fabric-card-small top-card">
-            <span class="fabric-label">FRANELA</span>
+            <span class="fabric-label" data-i18n="fabric_flannel">
+              FRANELA
+            </span>
           </div>
+
           <div class="fabric-card fabric-card-small bottom-card">
-            <span class="fabric-label">COCINA</span>
+            <span class="fabric-label" data-i18n="fabric_kitchen">
+              COCINA
+            </span>
           </div>
+
         </div>
+
       </div>
     </section>
+
+
+    <!-- PRODUCTS -->
 
     <section class="section" id="productos">
+
       <div class="container">
+
         <div class="section-heading">
-          <p class="eyebrow">Productos</p>
-          <h2>Lo esencial para limpieza diaria y reventa.</h2>
-          <p>Una primera muestra de nuestro catálogo. Agregaremos fotografías, medidas y presentaciones finales en la siguiente versión.</p>
+
+          <p class="eyebrow" data-i18n="products_eyebrow">
+            Productos
+          </p>
+
+          <h2 data-i18n="products_title">
+            Lo esencial para limpieza diaria y reventa.
+          </h2>
+
+          <p data-i18n="products_intro">
+            Una primera muestra de nuestro catálogo. Agregaremos fotografías,
+            medidas y presentaciones finales en la siguiente versión.
+          </p>
+
         </div>
+
 
         <div class="product-grid">
+
           <article class="product-card">
+
             <div class="product-icon">01</div>
-            <h3>Jerga para piso</h3>
-            <p>Textil absorbente para limpieza de pisos, disponible en presentaciones pensadas para distribución.</p>
-            <a href="#contacto">Cotizar →</a>
+
+            <h3 data-i18n="product_1_title">
+              Jerga para piso
+            </h3>
+
+            <p data-i18n="product_1_text">
+              Textil absorbente para limpieza de pisos, disponible en
+              presentaciones pensadas para distribución.
+            </p>
+
+            <a href="#contacto" data-i18n="product_quote">
+              Cotizar →
+            </a>
+
           </article>
 
+
           <article class="product-card">
+
             <div class="product-icon">02</div>
-            <h3>Franela</h3>
-            <p>Una opción versátil para limpieza general, mantenimiento y uso comercial.</p>
-            <a href="#contacto">Cotizar →</a>
+
+            <h3 data-i18n="product_2_title">
+              Franela
+            </h3>
+
+            <p data-i18n="product_2_text">
+              Una opción versátil para limpieza general, mantenimiento
+              y uso comercial.
+            </p>
+
+            <a href="#contacto" data-i18n="product_quote">
+              Cotizar →
+            </a>
+
           </article>
 
+
           <article class="product-card">
+
             <div class="product-icon">03</div>
-            <h3>Trapo de cocina</h3>
-            <p>Producto práctico para negocios, distribuidores y uso cotidiano.</p>
-            <a href="#contacto">Cotizar →</a>
+
+            <h3 data-i18n="product_3_title">
+              Trapo de cocina
+            </h3>
+
+            <p data-i18n="product_3_text">
+              Producto práctico para negocios, distribuidores
+              y uso cotidiano.
+            </p>
+
+            <a href="#contacto" data-i18n="product_quote">
+              Cotizar →
+            </a>
+
           </article>
+
         </div>
+
       </div>
     </section>
+
+
+    <!-- WHOLESALE -->
 
     <section class="section wholesale" id="mayoreo">
+
       <div class="container wholesale-grid">
+
         <div>
-          <p class="eyebrow light">Mayoreo</p>
-          <h2>¿Compras para distribuir o abastecer un negocio?</h2>
-          <p>
-            Cuéntanos qué producto necesitas, volumen aproximado y ciudad de entrega.
-            Podemos preparar una cotización enfocada en tus necesidades de compra.
+
+          <p class="eyebrow light" data-i18n="wholesale_eyebrow">
+            Mayoreo
           </p>
-          <a class="button button-light" href="#contacto">Quiero precio de mayoreo</a>
+
+          <h2 data-i18n="wholesale_title">
+            ¿Compras para distribuir o abastecer un negocio?
+          </h2>
+
+          <p data-i18n="wholesale_text">
+            Cuéntanos qué producto necesitas, volumen aproximado
+            y ciudad de entrega. Podemos preparar una cotización
+            enfocada en tus necesidades de compra.
+          </p>
+
+          <a
+            class="button button-light"
+            href="#contacto"
+            data-i18n="wholesale_button"
+          >
+            Quiero precio de mayoreo
+          </a>
+
         </div>
+
+
         <div class="wholesale-steps">
-          <div><span>1</span><p>Selecciona el producto.</p></div>
-          <div><span>2</span><p>Indica cantidad y ubicación.</p></div>
-          <div><span>3</span><p>Recibe seguimiento para tu cotización.</p></div>
+
+          <div>
+            <span>1</span>
+            <p data-i18n="wholesale_step_1">
+              Selecciona el producto.
+            </p>
+          </div>
+
+          <div>
+            <span>2</span>
+            <p data-i18n="wholesale_step_2">
+              Indica cantidad y ubicación.
+            </p>
+          </div>
+
+          <div>
+            <span>3</span>
+            <p data-i18n="wholesale_step_3">
+              Recibe seguimiento para tu cotización.
+            </p>
+          </div>
+
         </div>
+
       </div>
     </section>
+
+
+    <!-- ABOUT -->
 
     <section class="section" id="nosotros">
+
       <div class="container split-section">
+
         <div>
-          <p class="eyebrow">PROLIMTEX</p>
-          <h2>Una marca enfocada en productos textiles de limpieza.</h2>
+
+          <p class="eyebrow">
+            PROLIMTEX
+          </p>
+
+          <h2 data-i18n="about_title">
+            Una marca enfocada en productos textiles de limpieza.
+          </h2>
+
         </div>
+
+
         <div class="body-copy">
-          <p>
-            Trabajamos con una línea de productos pensada para limpieza cotidiana y comercial,
-            con especial atención a clientes de mayoreo y distribución.
+
+          <p data-i18n="about_text_1">
+            Trabajamos con una línea de productos pensada para limpieza
+            cotidiana y comercial, con especial atención a clientes
+            de mayoreo y distribución.
           </p>
-          <p>
-            Esta página será también un punto de contacto directo para conocer productos,
-            solicitar precios y facilitar nuevas relaciones comerciales.
+
+          <p data-i18n="about_text_2">
+            Esta página será también un punto de contacto directo
+            para conocer productos, solicitar precios y facilitar
+            nuevas relaciones comerciales.
           </p>
+
         </div>
+
       </div>
     </section>
+
+
+    <!-- CONTACT -->
 
     <section class="section contact-section" id="contacto">
+
       <div class="container contact-grid">
+
         <div>
-          <p class="eyebrow">Contacto</p>
-          <h2>Solicita una cotización.</h2>
-          <p>Por ahora este formulario funciona como prototipo visual. En la siguiente versión lo conectaremos a correo o WhatsApp.</p>
+
+          <p class="eyebrow" data-i18n="contact_eyebrow">
+            Contacto
+          </p>
+
+          <h2 data-i18n="contact_title">
+            Solicita una cotización.
+          </h2>
+
+          <p data-i18n="contact_text">
+            Completa tus datos y cuéntanos qué producto necesitas.
+            Te contactaremos para dar seguimiento a tu cotización.
+          </p>
+
         </div>
 
+
         <form class="contact-form" id="quoteForm">
+
           <label>
-            Nombre
-            <input type="text" name="name" placeholder="Tu nombre" required />
+
+            <span data-i18n="form_name">
+              Nombre
+            </span>
+
+            <input
+              type="text"
+              name="name"
+              placeholder="Tu nombre"
+              data-i18n-placeholder="form_name_placeholder"
+              required
+            />
+
           </label>
+
+
           <label>
-            Empresa
-            <input type="text" name="company" placeholder="Nombre de tu empresa" />
+
+            <span data-i18n="form_company">
+              Empresa
+            </span>
+
+            <input
+              type="text"
+              name="company"
+              placeholder="Nombre de tu empresa"
+              data-i18n-placeholder="form_company_placeholder"
+            />
+
           </label>
+
+
           <label>
-            Correo
-            <input type="email" name="email" placeholder="correo@empresa.com" required />
+
+            <span data-i18n="form_email">
+              Correo
+            </span>
+
+            <input
+              type="email"
+              name="email"
+              placeholder="correo@empresa.com"
+              data-i18n-placeholder="form_email_placeholder"
+              required
+            />
+
           </label>
+
+
           <label>
-            ¿Qué necesitas?
-            <textarea name="message" rows="5" placeholder="Producto, cantidad aproximada y ciudad de entrega" required></textarea>
+
+            <span data-i18n="form_message">
+              ¿Qué necesitas?
+            </span>
+
+            <textarea
+              name="message"
+              rows="5"
+              placeholder="Producto, cantidad aproximada y ciudad de entrega"
+              data-i18n-placeholder="form_message_placeholder"
+              required
+            ></textarea>
+
           </label>
-          <button class="button button-primary" type="submit">Enviar solicitud</button>
-          <p class="form-status" id="formStatus" aria-live="polite"></p>
+
+
+          <button
+            class="button button-primary"
+            type="submit"
+            data-i18n="form_button"
+          >
+            Enviar solicitud
+          </button>
+
+          <p
+            class="form-status"
+            id="formStatus"
+            aria-live="polite"
+          ></p>
+
         </form>
+
       </div>
     </section>
+
   </main>
 
+
+  <!-- FOOTER -->
+
   <footer class="site-footer">
+
     <div class="container footer-wrap">
+
       <div>
-        <strong>PROLIMTEX</strong>
-        <p>Soluciones textiles de limpieza.</p>
+
+        <strong>
+          PROLIMTEX
+        </strong>
+
+        <p data-i18n="footer_tagline">
+          Soluciones textiles de limpieza.
+        </p>
+
       </div>
-      <p>© <span id="year"></span> PROLIMTEX. Todos los derechos reservados.</p>
+
+      <p>
+        © <span id="year"></span> PROLIMTEX.
+        <span data-i18n="footer_rights">
+          Todos los derechos reservados.
+        </span>
+      </p>
+
     </div>
+
   </footer>
 
+
   <script src="script.js"></script>
+
 </body>
 </html>
