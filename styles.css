@@ -713,3 +713,47 @@ textarea:focus {
     width: 200px;
   }
 }
+/* Colores de marca PROLIMTEX */
+:root {
+  --primary: #062d56;
+  --primary-dark: #04203e;
+  --text: #062d56;
+  --dark: #062d56;
+  --accent: #e8eff6;
+}
+
+/* Títulos en azul */
+h1,
+h2,
+h3 {
+  color: var(--primary);
+}
+
+/* Mantener contraste en la sección de mayoreo */
+.wholesale h2 {
+  color: #fff;
+}
+
+/* Pie de página claro para mostrar el logo azul */
+.site-footer {
+  background: #f0f4f8;
+  color: var(--text);
+  border-top: 1px solid #d5dfe9;
+}
+
+.footer-logo {
+  width: 220px;
+  height: auto;
+}
+
+/* Sombras y selección acordes con el azul */
+.button-primary {
+  box-shadow: 0 12px 30px rgba(6, 45, 86, 0.2);
+}
+
+input:focus,
+textarea:focus {
+  outline: 2px solid rgba(6, 45, 86, 0.18);
+  border-color: var(--primary);
+}
+
