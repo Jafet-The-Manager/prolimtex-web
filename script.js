@@ -81,11 +81,13 @@ const translations = {
     wholesale_step_2: 'Indica cantidad y ubicación.',
     wholesale_step_3: 'Recibe seguimiento para tu cotización.',
 
-    about_title: 'Una marca enfocada en productos textiles de limpieza.',
+        about_title: 'Quiénes somos',
     about_text_1:
-      'Trabajamos con una línea de productos pensada para limpieza cotidiana y comercial, con especial atención a clientes de mayoreo y distribución.',
+      'En PROLIMTEX somos una empresa mexicana dedicada a la fabricación de jergas de piso y de cocina elaboradas con materiales regenerados.',
     about_text_2:
-      'Esta página será también un punto de contacto directo para conocer productos, solicitar precios y facilitar nuevas relaciones comerciales.',
+      'Trabajamos directamente con nuestros clientes, sin intermediarios, para ofrecer productos de calidad consistente, precios competitivos y un abasto confiable.',
+    about_text_3:
+      'Buscamos construir relaciones comerciales a largo plazo, con atención cercana y soluciones que respondan a las necesidades de cada negocio.',
 
     contact_eyebrow: 'Contacto',
     contact_title: 'Solicita una cotización.',
@@ -162,11 +164,13 @@ const translations = {
     wholesale_step_2: 'Tell us the quantity and location.',
     wholesale_step_3: 'Receive follow-up for your quote.',
 
-    about_title: 'A brand focused on textile cleaning products.',
+     about_title: 'About Us',
     about_text_1:
-      'We offer a line of products designed for everyday and commercial cleaning, with special attention to wholesale and distribution customers.',
+      'PROLIMTEX is a Mexican company specializing in the manufacture of floor and kitchen cleaning cloths made from reclaimed materials.',
     about_text_2:
-      'This website also serves as a direct point of contact to explore our products, request pricing, and build new business relationships.',
+      'We work directly with our customers, without intermediaries, to offer consistent quality, competitive prices, and a reliable supply.',
+    about_text_3:
+      'We aim to build long-term business relationships through personalized service and solutions tailored to the needs of each business.',
 
     contact_eyebrow: 'Contact',
     contact_title: 'Request a Quote.',
