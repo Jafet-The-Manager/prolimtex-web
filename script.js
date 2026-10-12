@@ -356,3 +356,147 @@ Me estoy comunicando a través del sitio web de PROLIMTEX.`;
 
   window.open(whatsappURL, '_blank');
 });
+
+// -------------------------
+// HERO PRODUCT CAROUSEL
+// -------------------------
+
+Object.assign(translations.es, {
+  carousel_jerga_text:
+    'Textil absorbente para la limpieza diaria.',
+  carousel_franela_text:
+    'Versatilidad para la limpieza de tu negocio y hogar.',
+  carousel_view: 'Ver producto →'
+});
+
+Object.assign(translations.en, {
+  carousel_jerga_text:
+    'Absorbent fabric for everyday cleaning.',
+  carousel_franela_text:
+    'Versatile cleaning for your business and home.',
+  carousel_view: 'View product →'
+});
+
+// Aplica también las nuevas traducciones al idioma seleccionado.
+setLanguage(document.documentElement.lang === 'en' ? 'en' : 'es');
+
+(() => {
+  const carousel = document.querySelector('.product-carousel');
+
+  if (!carousel) return;
+
+  const slides = [...carousel.querySelectorAll('.carousel-slide')];
+  const dots = [...carousel.querySelectorAll('[data-carousel-index]')];
+  const previous = carousel.querySelector('[data-carousel-prev]');
+  const next = carousel.querySelector('[data-carousel-next]');
+  const pauseButton = carousel.querySelector('[data-carousel-pause]');
+
+  const reducedMotion = window.matchMedia(
+    '(prefers-reduced-motion: reduce)'
+  );
+
+  let currentIndex = 0;
+  let paused = reducedMotion.matches;
+  let hovered = false;
+  let timer = null;
+
+  function showSlide(index) {
+    currentIndex = (index + slides.length) % slides.length;
+
+    slides.forEach((slide, slideIndex) => {
+      slide.hidden = slideIndex !== currentIndex;
+    });
+
+    dots.forEach((dot, dotIndex) => {
+      dot.setAttribute(
+        'aria-pressed',
+        String(dotIndex === currentIndex)
+      );
+    });
+  }
+
+  function updatePauseButton() {
+    pauseButton.textContent = paused ? '▶' : '❚❚';
+    pauseButton.setAttribute(
+      'aria-label',
+      paused ? 'Reanudar / Resume' : 'Pausar / Pause'
+    );
+  }
+
+  function restartTimer() {
+    window.clearInterval(timer);
+    timer = null;
+
+    if (
+      paused ||
+      hovered ||
+      document.hidden ||
+      carousel.contains(document.activeElement)
+    ) {
+      return;
+    }
+
+    timer = window.setInterval(() => {
+      showSlide(currentIndex + 1);
+    }, 6000);
+  }
+
+  // Después de elegir un producto manualmente,
+  // el carrusel permanece pausado.
+  function selectSlide(index) {
+    paused = true;
+    showSlide(index);
+    updatePauseButton();
+    restartTimer();
+  }
+
+  previous.addEventListener('click', () => {
+    selectSlide(currentIndex - 1);
+  });
+
+  next.addEventListener('click', () => {
+    selectSlide(currentIndex + 1);
+  });
+
+  dots.forEach(dot => {
+    dot.addEventListener('click', () => {
+      selectSlide(Number(dot.dataset.carouselIndex));
+    });
+  });
+
+  pauseButton.addEventListener('click', () => {
+    paused = !paused;
+    updatePauseButton();
+    restartTimer();
+  });
+
+  carousel.addEventListener('mouseenter', () => {
+    hovered = true;
+    restartTimer();
+  });
+
+  carousel.addEventListener('mouseleave', () => {
+    hovered = false;
+    restartTimer();
+  });
+
+  carousel.addEventListener('focusin', restartTimer);
+
+  carousel.addEventListener('focusout', () => {
+    window.setTimeout(restartTimer, 0);
+  });
+
+  document.addEventListener('visibilitychange', restartTimer);
+
+  reducedMotion.addEventListener('change', event => {
+    if (event.matches) {
+      paused = true;
+      updatePauseButton();
+      restartTimer();
+    }
+  });
+
+  showSlide(0);
+  updatePauseButton();
+  restartTimer();
+})();
