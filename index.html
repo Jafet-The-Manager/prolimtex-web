@@ -174,35 +174,105 @@
           </div>
         </div>
 
-        <div
-          class="hero-visual"
-          aria-label="Vista conceptual de productos PROLIMTEX"
-        >
-          <div class="fabric-card fabric-card-main">
-            <span class="fabric-label" data-i18n="fabric_mop">
-              JERGA
-            </span>
+      <div class="product-carousel" role="region" aria-label="Productos / Products">
 
-            <div class="fabric-texture"></div>
-          </div>
+  <div class="carousel-slide">
+    <a class="carousel-link" href="#producto-jerga">
+      <img
+        src="images-prolimtex-web/JERGA%2047%20AZUL.jpg"
+        alt="Jerga azul / Blue floor cleaning cloth"
+        class="carousel-photo"
+        fetchpriority="high"
+      />
 
-          <div class="fabric-card fabric-card-small top-card">
-            <span class="fabric-label" data-i18n="fabric_flannel">
-              FRANELA
-            </span>
-          </div>
+      <div class="carousel-copy">
+        <h2 data-i18n="product_1_title">Jerga para piso</h2>
 
-          <div class="fabric-card fabric-card-small bottom-card">
-            <span class="fabric-label" data-i18n="fabric_kitchen">
-              COCINA
-            </span>
-          </div>
-        </div>
+        <p data-i18n="carousel_jerga_text">
+          Textil absorbente para la limpieza diaria.
+        </p>
+
+        <span class="carousel-cta" data-i18n="carousel_view">
+          Ver producto →
+        </span>
       </div>
-    </section>
+    </a>
+  </div>
 
+  <div class="carousel-slide" hidden>
+    <a class="carousel-link" href="#producto-franela">
+      <img
+        src="images-prolimtex-web/FRANELA%20ROJA.png"
+        alt="Franela roja / Red flannel cloth"
+        class="carousel-photo"
+      />
+
+      <div class="carousel-copy">
+        <h2 data-i18n="product_2_title">Franela</h2>
+
+        <p data-i18n="carousel_franela_text">
+          Versatilidad para la limpieza de tu negocio y hogar.
+        </p>
+
+        <span class="carousel-cta" data-i18n="carousel_view">
+          Ver producto →
+        </span>
+      </div>
+    </a>
+  </div>
+
+  <div class="carousel-controls">
+    <button
+      class="carousel-arrow"
+      type="button"
+      data-carousel-prev
+      aria-label="Anterior / Previous"
+    >
+      ←
+    </button>
+
+    <div class="carousel-dots">
+      <button
+        class="carousel-dot"
+        type="button"
+        data-carousel-index="0"
+        aria-label="Jerga / Floor cloth"
+        aria-pressed="true"
+      ></button>
+
+      <button
+        class="carousel-dot"
+        type="button"
+        data-carousel-index="1"
+        aria-label="Franela / Flannel"
+        aria-pressed="false"
+      ></button>
+    </div>
+
+    <button
+      class="carousel-arrow"
+      type="button"
+      data-carousel-next
+      aria-label="Siguiente / Next"
+    >
+      →
+    </button>
+
+    <button
+      class="carousel-pause"
+      type="button"
+      data-carousel-pause
+      aria-label="Pausar / Pause"
+    >
+      ❚❚
+    </button>
+  </div>
+</div>
     <!-- PRODUCTS -->
-
+<article class="product-card" id="producto-jerga">
+  
+  <article class="product-card" id="producto-franela">
+    
     <section class="section" id="productos">
       <div class="container">
         <div class="section-heading">
