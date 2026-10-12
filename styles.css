@@ -757,3 +757,127 @@ textarea:focus {
   border-color: var(--primary);
 }
 
+/* Carrusel de productos en la portada */
+
+.product-carousel {
+  width: 100%;
+  min-width: 0;
+  overflow: hidden;
+  background: #ffffff;
+  border: 1px solid #dce5eb;
+  border-radius: 24px;
+  box-shadow: 0 16px 40px rgba(9, 47, 84, 0.08);
+}
+
+.carousel-slide[hidden] {
+  display: none !important;
+}
+
+.carousel-link {
+  display: block;
+  color: #0a3055;
+  text-decoration: none;
+}
+
+.carousel-photo {
+  display: block;
+  width: 100%;
+  height: clamp(230px, 28vw, 360px);
+  object-fit: contain;
+  padding: 24px;
+  box-sizing: border-box;
+  background: #f5f7f8;
+}
+
+.carousel-copy {
+  padding: 24px 28px 12px;
+}
+
+.carousel-copy h2 {
+  margin: 0 0 10px;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.2;
+}
+
+.carousel-copy p {
+  min-height: 3em;
+  margin: 0 0 18px;
+  color: #586870;
+  line-height: 1.5;
+}
+
+.carousel-cta {
+  display: inline-block;
+  font-weight: 700;
+  color: #0a3055;
+}
+
+.carousel-link:hover .carousel-cta {
+  text-decoration: underline;
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 20px 24px;
+}
+
+.carousel-arrow,
+.carousel-pause,
+.carousel-dot {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  cursor: pointer;
+  color: #0a3055;
+  background: #ffffff;
+  border: 1px solid #dce5eb;
+  border-radius: 50%;
+}
+
+.carousel-arrow {
+  font-size: 22px;
+}
+
+.carousel-arrow:hover,
+.carousel-pause:hover {
+  background: #edf3f7;
+}
+
+.carousel-dots {
+  display: flex;
+  gap: 0;
+}
+
+.carousel-dot {
+  border: 0;
+  background: transparent;
+}
+
+.carousel-dot::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #c5d0d9;
+}
+
+.carousel-dot[aria-pressed="true"]::before {
+  background: #0a3055;
+}
+
+.carousel-link:focus-visible,
+.carousel-controls button:focus-visible {
+  outline: 3px solid #287dc0;
+  outline-offset: -4px;
+}
+
+#producto-jerga,
+#producto-franela {
+  scroll-margin-top: 120px;
+}
