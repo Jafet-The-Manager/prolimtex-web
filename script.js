@@ -81,9 +81,9 @@ const translations = {
     wholesale_step_2: 'Indica cantidad y ubicación.',
     wholesale_step_3: 'Recibe seguimiento para tu cotización.',
 
-        about_title: 'Quiénes somos',
+        about_title: 'Acerca de Nosotros',
     about_text_1:
-      'PROLIMTEX somos una empresa mexicana dedicada a la fabricación de jergas de piso y de cocina elaboradas con materiales regenerados.',
+      'PROLIMTEX es una empresa mexicana dedicada a la fabricación de jergas de piso y de cocina elaboradas con materiales regenerados.',
     about_text_2:
       'Trabajamos directamente con nuestros clientes, sin intermediarios, para ofrecer productos de calidad consistente, precios competitivos y un abasto confiable.',
     about_text_3:
