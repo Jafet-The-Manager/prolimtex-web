@@ -358,42 +358,275 @@ Me estoy comunicando a través del sitio web de PROLIMTEX.`;
 });
 
 // -------------------------
-// HERO PRODUCT CAROUSEL
+// CATÁLOGO Y CARRUSEL
 // -------------------------
 
-Object.assign(translations.es, {
-  carousel_jerga_text:
-    'Textil absorbente para la limpieza diaria.',
-  carousel_franela_text:
-    'Versatilidad para la limpieza de tu negocio y hogar.',
-  carousel_view: 'Ver producto →'
-});
-
-Object.assign(translations.en, {
-  carousel_jerga_text:
-    'Absorbent fabric for everyday cleaning.',
-  carousel_franela_text:
-    'Versatile cleaning for your business and home.',
-  carousel_view: 'View product →'
-});
-
-// Aplica también las nuevas traducciones al idioma seleccionado.
-setLanguage(document.documentElement.lang === 'en' ? 'en' : 'es');
-
 (() => {
-  const carousel = document.querySelector('.product-carousel');
+  const imagePath = 'images-prolimtex-web/';
 
+  const products = [
+    {
+      id: 'jerga',
+      images: [
+        'jerga-rollo.jpg',
+        'jerga-panos.png',
+        'jerga-panos-colores.png'
+      ],
+      es: {
+        title: 'Jerga para piso',
+        text: 'Jergas en rollo y paños para limpieza de pisos y reventa.',
+        variants: [
+          'Jerga en rollo',
+          'Paños de jerga azul y roja',
+          'Paños de jerga de colores'
+        ]
+      },
+      en: {
+        title: 'Floor Cleaning Cloths',
+        text: 'Floor cleaning textiles in rolls and individual cloths for cleaning and resale.',
+        variants: [
+          'Floor cloth roll',
+          'Blue and red floor cloths',
+          'Colored floor cloths'
+        ]
+      }
+    },
+    {
+      id: 'franela',
+      images: ['franela-rollo.png'],
+      es: {
+        title: 'Franela para limpieza',
+        text: 'Franela en rollo para limpieza general y mantenimiento.',
+        variants: ['Franela roja en rollo']
+      },
+      en: {
+        title: 'Flannel Cleaning Cloth',
+        text: 'Flannel rolls for general cleaning and maintenance.',
+        variants: ['Red flannel roll']
+      }
+    },
+    {
+      id: 'cocina',
+      images: ['cocina-panos.png', 'cocina-rollo.png'],
+      es: {
+        title: 'Paños de cocina',
+        text: 'Textiles de cocina en paños y rollos, con opciones de color.',
+        variants: ['Paños de cocina de colores', 'Rollo de cocina']
+      },
+      en: {
+        title: 'Kitchen Cloths',
+        text: 'Kitchen textiles in individual cloths and rolls, with color options.',
+        variants: ['Colored kitchen cloths', 'Kitchen cloth roll']
+      }
+    },
+    {
+      id: 'hilo',
+      images: ['hilo-25.png'],
+      es: {
+        title: 'Hilo 2.5',
+        text: 'Hilo en bobinas para fabricación. Consulta presentaciones y disponibilidad.',
+        variants: ['Bobinas de hilo 2.5']
+      },
+      en: {
+        title: '2.5 Yarn',
+        text: 'Yarn bobbins for manufacturing. Ask about available formats and stock.',
+        variants: ['2.5 yarn bobbins']
+      }
+    },
+    {
+      id: 'hilaza',
+      images: ['hilaza-colores.png'],
+      es: {
+        title: 'Hilaza de colores',
+        text: 'Hilaza para fabricación de trapeadores. Consulta los colores disponibles.',
+        variants: ['Bobinas de hilaza de colores']
+      },
+      en: {
+        title: 'Colored Mop Yarn',
+        text: 'Yarn for mop manufacturing. Ask about available colors.',
+        variants: ['Colored mop yarn bobbins']
+      }
+    },
+    {
+      id: 'estopa',
+      images: ['estopa.png'],
+      es: {
+        title: 'Estopa para limpieza',
+        text: 'Estopa para tareas de limpieza y mantenimiento. Consulta presentaciones.',
+        variants: ['Estopa blanca']
+      },
+      en: {
+        title: 'Cleaning Tow',
+        text: 'Loose cleaning fibers for cleaning and maintenance. Ask about available formats.',
+        variants: ['White cleaning tow']
+      }
+    }
+  ];
+
+  Object.assign(translations.es, {
+    products_title: 'Textiles para limpiar, distribuir y fabricar.',
+    products_intro:
+      'Explora nuestras seis líneas de productos y consulta las opciones para tu negocio.',
+    carousel_view: 'Ver producto →'
+  });
+
+  Object.assign(translations.en, {
+    products_title: 'Textiles for cleaning, distribution and manufacturing.',
+    products_intro:
+      'Explore our six product lines and find options for your business.',
+    carousel_view: 'View product →'
+  });
+
+  products.forEach(product => {
+    ['es', 'en'].forEach(language => {
+      const content = product[language];
+      const dictionary = translations[language];
+
+      dictionary[`catalog_${product.id}_title`] = content.title;
+      dictionary[`catalog_${product.id}_text`] = content.text;
+
+      content.variants.forEach((variant, index) => {
+        dictionary[`catalog_${product.id}_image_${index}`] = variant;
+      });
+    });
+  });
+
+  // Construye las seis tarjetas dentro del catálogo existente.
+  const grid = document.querySelector('.product-grid');
+
+  if (grid) {
+    grid.innerHTML = products.map(product => `
+      <article class="product-card" id="producto-${product.id}">
+        <img
+          class="product-photo"
+          src="${imagePath}${product.images[0]}"
+          alt="${product.es.variants[0]}"
+          data-product-main="${product.id}"
+          data-product-image="0"
+          loading="lazy"
+          decoding="async"
+          width="600"
+          height="600"
+        />
+
+        ${product.images.length > 1 ? `
+          <div class="product-thumbnails">
+            ${product.images.map((file, index) => `
+              <button
+                type="button"
+                class="product-thumbnail"
+                data-product="${product.id}"
+                data-image-index="${index}"
+                aria-pressed="${index === 0}"
+                aria-label="${product.es.variants[index]}"
+              >
+                <img src="${imagePath}${file}" alt="" loading="lazy" />
+              </button>
+            `).join('')}
+          </div>
+        ` : ''}
+
+        <h3 data-i18n="catalog_${product.id}_title">
+          ${product.es.title}
+        </h3>
+
+        <p data-i18n="catalog_${product.id}_text">
+          ${product.es.text}
+        </p>
+
+        <a href="#contacto" data-i18n="product_quote">
+          Cotizar →
+        </a>
+      </article>
+    `).join('');
+  }
+
+  // Miniaturas: cambian la foto de la tarjeta seleccionada.
+  grid?.addEventListener('click', event => {
+    const button = event.target.closest('.product-thumbnail');
+    if (!button) return;
+
+    const product = products.find(item => item.id === button.dataset.product);
+    const index = Number(button.dataset.imageIndex);
+    const card = button.closest('.product-card');
+    const mainImage = card.querySelector('.product-photo');
+    const language = document.documentElement.lang === 'en' ? 'en' : 'es';
+
+    mainImage.src = imagePath + product.images[index];
+    mainImage.alt = product[language].variants[index];
+    mainImage.dataset.productImage = String(index);
+
+    card.querySelectorAll('.product-thumbnail').forEach(item => {
+      item.setAttribute('aria-pressed', String(item === button));
+    });
+  });
+
+  const carousel = document.querySelector('.product-carousel');
   if (!carousel) return;
+
+  // Una diapositiva por línea de producto.
+  carousel.innerHTML = `
+    ${products.map((product, index) => `
+      <div class="carousel-slide" ${index > 0 ? 'hidden' : ''}>
+        <a class="carousel-link" href="#producto-${product.id}">
+          <img
+            class="carousel-photo"
+            src="${imagePath}${product.images[0]}"
+            alt="${product.es.variants[0]}"
+            data-carousel-product="${product.id}"
+            ${index === 0 ? 'fetchpriority="high"' : ''}
+            decoding="async"
+            width="600"
+            height="600"
+          />
+          <div class="carousel-copy">
+            <h2 data-i18n="catalog_${product.id}_title">
+              ${product.es.title}
+            </h2>
+            <p data-i18n="catalog_${product.id}_text">
+              ${product.es.text}
+            </p>
+            <span class="carousel-cta" data-i18n="carousel_view">
+              Ver producto →
+            </span>
+          </div>
+        </a>
+      </div>
+    `).join('')}
+
+    <div class="carousel-controls">
+      <button type="button" class="carousel-arrow" data-carousel-prev>
+        ←
+      </button>
+
+      <button type="button" class="carousel-arrow" data-carousel-next>
+        →
+      </button>
+
+      <button type="button" class="carousel-pause" data-carousel-pause>
+        ❚❚
+      </button>
+
+      <div class="carousel-dots">
+        ${products.map((product, index) => `
+          <button
+            type="button"
+            class="carousel-dot"
+            data-carousel-index="${index}"
+            aria-label="${product.es.title}"
+            aria-pressed="${index === 0}"
+          ></button>
+        `).join('')}
+      </div>
+    </div>
+  `;
 
   const slides = [...carousel.querySelectorAll('.carousel-slide')];
   const dots = [...carousel.querySelectorAll('[data-carousel-index]')];
   const previous = carousel.querySelector('[data-carousel-prev]');
   const next = carousel.querySelector('[data-carousel-next]');
   const pauseButton = carousel.querySelector('[data-carousel-pause]');
-
-  const reducedMotion = window.matchMedia(
-    '(prefers-reduced-motion: reduce)'
-  );
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   let currentIndex = 0;
   let paused = reducedMotion.matches;
@@ -403,24 +636,60 @@ setLanguage(document.documentElement.lang === 'en' ? 'en' : 'es');
   function showSlide(index) {
     currentIndex = (index + slides.length) % slides.length;
 
-    slides.forEach((slide, slideIndex) => {
-      slide.hidden = slideIndex !== currentIndex;
+    slides.forEach((slide, position) => {
+      slide.hidden = position !== currentIndex;
     });
 
-    dots.forEach((dot, dotIndex) => {
-      dot.setAttribute(
-        'aria-pressed',
-        String(dotIndex === currentIndex)
-      );
+    dots.forEach((dot, position) => {
+      dot.setAttribute('aria-pressed', String(position === currentIndex));
     });
   }
 
-  function updatePauseButton() {
+  function updateLabels() {
+    const language = document.documentElement.lang === 'en' ? 'en' : 'es';
+    const english = language === 'en';
+
+    carousel.setAttribute('aria-label', english ? 'Products' : 'Productos');
+    previous.setAttribute('aria-label', english ? 'Previous product' : 'Producto anterior');
+    next.setAttribute('aria-label', english ? 'Next product' : 'Producto siguiente');
+
     pauseButton.textContent = paused ? '▶' : '❚❚';
     pauseButton.setAttribute(
       'aria-label',
-      paused ? 'Reanudar / Resume' : 'Pausar / Pause'
+      paused
+        ? (english ? 'Resume carousel' : 'Reanudar carrusel')
+        : (english ? 'Pause carousel' : 'Pausar carrusel')
     );
+
+    dots.forEach((dot, index) => {
+      dot.setAttribute('aria-label', products[index][language].title);
+    });
+
+    products.forEach(product => {
+      const mainImage = document.querySelector(
+        `[data-product-main="${product.id}"]`
+      );
+
+      if (mainImage) {
+        mainImage.alt = product[language].variants[
+          Number(mainImage.dataset.productImage)
+        ];
+      }
+
+      const heroImage = carousel.querySelector(
+        `[data-carousel-product="${product.id}"]`
+      );
+      heroImage.alt = product[language].variants[0];
+
+      document.querySelectorAll(
+        `.product-thumbnail[data-product="${product.id}"]`
+      ).forEach(button => {
+        button.setAttribute(
+          'aria-label',
+          product[language].variants[Number(button.dataset.imageIndex)]
+        );
+      });
+    });
   }
 
   function restartTimer() {
@@ -432,31 +701,22 @@ setLanguage(document.documentElement.lang === 'en' ? 'en' : 'es');
       hovered ||
       document.hidden ||
       carousel.contains(document.activeElement)
-    ) {
-      return;
-    }
+    ) return;
 
     timer = window.setInterval(() => {
       showSlide(currentIndex + 1);
-    }, 6000);
+    }, 5000);
   }
 
-  // Después de elegir un producto manualmente,
-  // el carrusel permanece pausado.
   function selectSlide(index) {
     paused = true;
     showSlide(index);
-    updatePauseButton();
+    updateLabels();
     restartTimer();
   }
 
-  previous.addEventListener('click', () => {
-    selectSlide(currentIndex - 1);
-  });
-
-  next.addEventListener('click', () => {
-    selectSlide(currentIndex + 1);
-  });
+  previous.addEventListener('click', () => selectSlide(currentIndex - 1));
+  next.addEventListener('click', () => selectSlide(currentIndex + 1));
 
   dots.forEach(dot => {
     dot.addEventListener('click', () => {
@@ -466,7 +726,7 @@ setLanguage(document.documentElement.lang === 'en' ? 'en' : 'es');
 
   pauseButton.addEventListener('click', () => {
     paused = !paused;
-    updatePauseButton();
+    updateLabels();
     restartTimer();
   });
 
@@ -481,7 +741,6 @@ setLanguage(document.documentElement.lang === 'en' ? 'en' : 'es');
   });
 
   carousel.addEventListener('focusin', restartTimer);
-
   carousel.addEventListener('focusout', () => {
     window.setTimeout(restartTimer, 0);
   });
@@ -491,12 +750,18 @@ setLanguage(document.documentElement.lang === 'en' ? 'en' : 'es');
   reducedMotion.addEventListener('change', event => {
     if (event.matches) {
       paused = true;
-      updatePauseButton();
+      updateLabels();
       restartTimer();
     }
   });
 
+  // Traduce también las etiquetas de imágenes y controles.
+  languageButtons.forEach(button => {
+    button.addEventListener('click', updateLabels);
+  });
+
+  setLanguage(document.documentElement.lang === 'en' ? 'en' : 'es');
   showSlide(0);
-  updatePauseButton();
+  updateLabels();
   restartTimer();
 })();
