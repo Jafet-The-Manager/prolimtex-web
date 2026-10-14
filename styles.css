@@ -881,3 +881,99 @@ textarea:focus {
 #producto-franela {
   scroll-margin-top: 120px;
 }
+/* Catálogo de seis líneas */
+.product-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.product-card {
+  min-width: 0;
+  scroll-margin-top: 110px;
+}
+
+.product-photo {
+  height: 240px;
+  padding: 10px;
+  object-fit: contain;
+  background: #fff;
+}
+
+.product-thumbnails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.product-thumbnail {
+  width: 62px;
+  height: 62px;
+  padding: 5px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.product-thumbnail img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product-thumbnail[aria-pressed="true"] {
+  border: 2px solid var(--primary);
+}
+
+.product-thumbnail:focus-visible {
+  outline: 3px solid #287dc0;
+  outline-offset: 3px;
+}
+
+/* Espacio estable entre diapositivas */
+.carousel-photo {
+  height: 320px;
+  background: #fff;
+}
+
+.carousel-copy {
+  min-height: 205px;
+}
+
+.carousel-copy h2 {
+  min-height: 2.4em;
+}
+
+.carousel-controls {
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.carousel-dots {
+  order: 4;
+  flex-basis: 100%;
+  justify-content: center;
+}
+
+@media (max-width: 1000px) {
+  .product-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .carousel-photo {
+    height: 280px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
